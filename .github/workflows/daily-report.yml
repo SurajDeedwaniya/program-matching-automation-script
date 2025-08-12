@@ -2,8 +2,8 @@ name: Daily Program & Brochure Reports
 
 # Run daily at 18:00 IST => 12:30 UTC
 on:
-  schedule:
-    - cron: '30 12 * * *'
+  # schedule:
+    # - cron: '30 12 * * *'
   workflow_dispatch: {}  # allow manual runs
 
 jobs:
