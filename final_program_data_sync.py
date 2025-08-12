@@ -491,7 +491,7 @@ def run_semantic_validation():
         mismatches = json.load(f)
 
     # ✅ Load existing match file (may be empty)
-    match_file_path = os.path.join(WORKDIR,"/match_report.json")
+    match_file_path = os.path.join(WORKDIR,"match_report.json")
     if os.path.exists(match_file_path):
         with open(match_file_path, "r") as f:
             matched = json.load(f)
