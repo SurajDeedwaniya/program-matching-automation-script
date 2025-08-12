@@ -637,7 +637,13 @@ def run_semantic_validation():
 import json
 import csv
 from collections import defaultdict
-from IPython.display import Markdown, display
+try:
+    from IPython.display import Markdown, display
+except ImportError:
+    def display(x):
+        print(x)
+    def Markdown(x):
+        return x
 import pandas as pd
 
 def generate_markdown_report():
@@ -1262,7 +1268,13 @@ def check_brochure_mismatches():
 import json
 import csv
 from collections import defaultdict
-from IPython.display import Markdown, display
+try:
+    from IPython.display import Markdown, display
+except ImportError:
+    def display(x):
+        print(x)
+    def Markdown(x):
+        return x
 import pandas as pd
 
 def generate_brochure_markdown_report():
