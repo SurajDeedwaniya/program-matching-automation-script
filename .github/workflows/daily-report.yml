@@ -9,7 +9,7 @@ on:
 jobs:
   run-report:
     runs-on: ubuntu-latest
-    steps:
+    steps:  
       - name: Checkout repo
         uses: actions/checkout@v4
 
