@@ -1,0 +1,11 @@
+gspread
+oauth2client
+pandas
+tabulate
+google-generativeai
+pymupdf
+requests
+Pillow
+pytesseract
+openpyxl
+tqdm
