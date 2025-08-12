@@ -480,7 +480,7 @@ def run_semantic_validation():
        print("⚠️ GEMINI_API_KEY not found in environment — semantic validation will be skipped.")
        return
 
-    # os.environ["GEMINI_API_KEY"] = "AIzaSyBaan9lpkE1lVgkNAD0uFSRHWIhKa0GGEc" # 🔐 Add your actual API key here
+     # 🔐 Add your actual API key here
 
     # ✅ Initialize Gemini
     genai.configure(api_key=os.environ["GEMINI_API_KEY"])
