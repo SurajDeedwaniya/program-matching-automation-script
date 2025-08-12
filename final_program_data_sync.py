@@ -18,7 +18,13 @@ Original file is located at
 #   !pip install pytesseract
 #   !apt-get install -y libtesseract-dev
 
-install_dependencies()
+# install_dependencies()
+
+import os
+
+# Use a writable working directory (GitHub Actions workspace or local folder)
+WORKDIR = os.environ.get("WORKDIR", os.getcwd())
+
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -48,7 +54,7 @@ spreadsheet_url = None
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 
-log_file_path = '/content/mismatch_debug.log'
+log_file_path = os.path.join(WORKDIR,"mismatch_debug.log")
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -62,7 +68,7 @@ def load_sheet_data():
     global client, spreadsheet_url  # ✅ Ensure globals are referenced properly
 
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    credentials_path = '/content/service_account.json'
+    credentials_path = os.path.join(WORKDIR,'service_account.json')
     creds = ServiceAccountCredentials.from_json_keyfile_name(credentials_path, scope)
 
     client = gspread.authorize(creds)
@@ -113,7 +119,7 @@ def run_mismatch_checker():
     print("📘 All sheet tabs:", sheet_names)
 
     logging.info("📂 Loading JSON from programs.json...")
-    with open('/content/programs.json', 'r') as f:
+    with open(os.path.join(WORKDIR,'programs.json'), 'r') as f:
         json_data = json.load(f)
 
     json_programs_by_id = {str(p['id']).strip().lower(): p for p in json_data}
@@ -425,15 +431,15 @@ def run_mismatch_checker():
             #             })
 
     logging.info("📝 Writing mismatch report with %d items", len(all_mismatches))
-    with open('/content/mismatch_report.json', 'w') as f:
+    with open(os.path.join(WORKDIR,'mismatch_report.json'), 'w') as f:
         json.dump(all_mismatches, f, indent=2)
 
 
     logging.info("📝 Writing match report with %d items", len(all_matches))
-    with open('/content/match_report.json', 'w') as f:
+    with open(os.path.join(WORKDIR,'match_report.json'), 'w') as f:
         json.dump(all_matches, f, indent=2)
 
-    with open('/content/all_traversed_ids.json', 'w') as f:
+    with open(os.path.join(WORKDIR,'all_traversed_ids.json'), 'w') as f:
         json.dump(all_traversed_ids, f, indent=2)
 
     logging.info("📁 Saved all traversed program IDs to: all_traversed_ids.json")
@@ -481,11 +487,11 @@ def run_semantic_validation():
     model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
 
     # ✅ Load mismatches from Agent 2
-    with open("/content/mismatch_report.json", "r") as f:
+    with open(os.path.join(WORKDIR,"mismatch_report.json"), "r") as f:
         mismatches = json.load(f)
 
     # ✅ Load existing match file (may be empty)
-    match_file_path = "/content/match_report.json"
+    match_file_path = os.path.join(WORKDIR,"/match_report.json")
     if os.path.exists(match_file_path):
         with open(match_file_path, "r") as f:
             matched = json.load(f)
@@ -563,7 +569,7 @@ def run_semantic_validation():
         time.sleep(1)
 
     # ✅ Save cleaned mismatches
-    with open("/content/validated_mismatches.json", "w") as f:
+    with open(os.path.join(WORKDIR,"validated_mismatches.json"), "w") as f:
         json.dump(validated, f, indent=2)
 
     print(f"\n✅ Cleaned mismatches saved to validated_mismatches.json")
@@ -577,7 +583,7 @@ def run_semantic_validation():
     existing_matched_ids = {entry['id'] for entry in matched}
 
     # ✅ Load all ids to validate from ids.json
-    with open("/content/all_traversed_ids.json", "r") as f:
+    with open(os.path.join(WORKDIR,"all_traversed_ids.json"), "r") as f:
         id_entries = json.load(f)  # assumed format: list of { "id": ..., "program_name": ... }
     # Find sheet name and program name for each resolved id
     for resolved_id in resolved_ids:
@@ -620,7 +626,7 @@ def run_semantic_validation():
 
 
     # ✅ Save common status report
-    with open("/content/program_status_summary.json", "w") as f:
+    with open(os.path.join(WORKDIR,"program_status_summary.json"), "w") as f:
         json.dump(common_status_report, f, indent=2)
 
     print("📄 Status summary written to program_status_summary.json")
@@ -636,7 +642,7 @@ import pandas as pd
 
 def generate_markdown_report():
     # Load mismatches
-    with open("/content/validated_mismatches.json", "r") as f:
+    with open(os.path.join(WORKDIR,"validated_mismatches.json"), "r") as f:
         mismatches = json.load(f)
 
     # Group mismatches by sheet name
@@ -646,14 +652,14 @@ def generate_markdown_report():
 
     # Load match data
     try:
-        with open("/content/match_report.json", "r") as f:
+        with open(os.path.join(WORKDIR,"match_report.json"), "r") as f:
             matches = json.load(f)
     except FileNotFoundError:
         matches = []
 
     # Load summary data
     try:
-        with open("/content/program_status_summary.json", "r") as f:
+        with open(os.path.join(WORKDIR,"program_status_summary.json"), "r") as f:
             summary = json.load(f)
     except FileNotFoundError:
         summary = []
@@ -675,12 +681,12 @@ def generate_markdown_report():
                 jv = str(item["json_value"]).replace("\n", " ").strip()
                 lines.append(f"| {field} | {sv} | {jv} |")
             lines.append("")
-    with open("/content/mismatch_report.md", "w") as f:
+    with open(os.path.join(WORKDIR,"mismatch_report.md"), "w") as f:
         f.write("\n".join(lines))
     print("✅ Markdown report generated at `/content/mismatch_report.md`")
 
     # Write to Excel
-    with pd.ExcelWriter("/content/mismatch_report.xlsx") as writer:
+    with pd.ExcelWriter(os.path.join(WORKDIR,"mismatch_report.xlsx")) as writer:
         # 1. Summary Sheet
         if summary:
             pd.DataFrame(summary).to_excel(writer, sheet_name="Status Summary", index=False)
@@ -709,7 +715,7 @@ def generate_markdown_report():
     print("✅ Excel report saved at `/content/mismatch_report.xlsx` with multiple sheets.")
 
 def preview_markdown():
-    with open("/content/mismatch_report.md", "r") as f:
+    with open(os.path.join(WORKDIR,"mismatch_report.md"), "r") as f:
         content = f.read()
     display(Markdown(content))
 
@@ -736,7 +742,7 @@ import datetime as dt
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 
-log_file_path = '/content/brochure_mismatch_debug.log'
+log_file_path = os.path.join(WORKDIR,'brochure_mismatch_debug.log')
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -940,12 +946,12 @@ def match_orientation_dates(sheet_val, page_text):
 
 # ✅ Main checker
 def check_brochure_mismatches():
-    with open('/content/programs.json', 'r') as f:
+    with open(os.path.join(WORKDIR,'programs.json'), 'r') as f:
         programs = json.load(f)
     id_to_brochure_url = {p['id']: p.get('brochure', {}).get('pdf', '') for p in programs if p.get('id')}
 
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('/content/service_account.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name(os.path.join(WORKDIR,'service_account.json'), scope)
     client = gspread.authorize(creds)
     spreadsheet = client.open_by_url("https://docs.google.com/spreadsheets/d/13s0yN_9fhspaezqqjfZP1OuziIChJM2aD3kmkjP4mhU/edit?gid=353770695#gid=353770695")
 
@@ -1167,13 +1173,13 @@ def check_brochure_mismatches():
             if not has_mismatch:
                 matched_ids_to_sheet[program_id] = sheet_name
 
-    with open('/content/brochure_mismatch_report.json', 'w') as f:
+    with open(os.path.join(WORKDIR,'brochure_mismatch_report.json'), 'w') as f:
         json.dump(all_mismatches, f, indent=2)
 
          # ✅ Build map of mismatches per program ID
     mismatch_ids = set(item["id"] for item in all_mismatches)
 
-    with open('/content/programs.json', 'r') as f:
+    with open(os.path.join(WORKDIR,'programs.json'), 'r') as f:
          programs = json.load(f)
 
     match_brochure = []
@@ -1190,7 +1196,7 @@ def check_brochure_mismatches():
                 "sheet": sheet_name
             })
 
-    with open('/content/match_brochure.json', 'w') as f:
+    with open(os.path.join(WORKDIR,'match_brochure.json'), 'w') as f:
         json.dump(match_brochure, f, indent=2)
 
     logging.info("✅ match_brochure.json saved with %d entries.", len(match_brochure))
@@ -1236,7 +1242,7 @@ def check_brochure_mismatches():
             "status": "not found"
         })
 
-    with open("/content/brochure_status_summary.json", "w") as f:
+    with open(os.path.join(WORKDIR,"brochure_status_summary.json"), "w") as f:
         json.dump(status_summary, f, indent=2)
 
     logging.info("📄 brochure_status_summary.json saved with %d entries.", len(status_summary))
@@ -1261,7 +1267,7 @@ import pandas as pd
 
 def generate_brochure_markdown_report():
     # ✅ Load mismatches
-    with open("/content/brochure_mismatch_report.json", "r") as f:
+    with open(os.path.join(WORKDIR,"brochure_mismatch_report.json"), "r") as f:
         mismatches = json.load(f)
 
     # ✅ Group mismatches by sheet and program id
@@ -1285,7 +1291,7 @@ def generate_brochure_markdown_report():
             lines.append("")
 
     # ✅ Save markdown
-    with open("/content/brochure_report.md", "w") as f:
+    with open(os.path.join(WORKDIR,"brochure_report.md"), "w") as f:
         f.write("\n".join(lines))
     print("✅ Markdown saved to `/content/brochure_report.md`")
 
@@ -1304,20 +1310,20 @@ def generate_brochure_markdown_report():
 
     # ✅ Load matches
     try:
-        with open("/content/match_brochure.json", "r") as f:
+        with open(os.path.join(WORKDIR,"match_brochure.json"), "r") as f:
             matches = json.load(f)
     except FileNotFoundError:
         matches = []
 
     # ✅ Load summary
     try:
-        with open("/content/brochure_status_summary.json", "r") as f:
+        with open(os.path.join(WORKDIR,"brochure_status_summary.json"), "r") as f:
             summary = json.load(f)
     except FileNotFoundError:
         summary = []
 
     # ✅ Save all to Excel
-    with pd.ExcelWriter("/content/brochure_report.xlsx") as writer:
+    with pd.ExcelWriter(os.path.join(WORKDIR,"brochure_report.xlsx")) as writer:
         # Summary Sheet
         if summary:
             pd.DataFrame(summary).to_excel(writer, sheet_name="Summary", index=False)
@@ -1337,13 +1343,13 @@ def generate_brochure_markdown_report():
     print("✅ Excel saved to `/content/brochure_report.xlsx` with summary, matches, and mismatches by sheet.")
 
 def brochure_preview_markdown():
-    with open("/content/brochure_report.md", "r") as f:
+    with open(os.path.join(WORKDIR,"brochure_report.md"), "r") as f:
         content = f.read()
     display(Markdown(content))
 
 
 # generate_brochure_markdown_report()
-import os
+# import os
 
 def main(run_semantic=True):
     """

@@ -57,8 +57,9 @@ jobs:
           # ensure python file name matches what you committed
           python final_program_data_sync.py
 
-      - name: Send email with attachments
+        - name: Send email with attachments
         env:
+          WORKDIR: ${{ github.workspace }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}

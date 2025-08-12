@@ -1,6 +1,8 @@
 # send_email.py
 import os, mimetypes, smtplib
 from email.message import EmailMessage
+# Use a writable working directory (GitHub Actions workspace or local folder)
+WORKDIR = os.environ.get("WORKDIR", os.getcwd())
 
 SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
 SMTP_PORT = int(os.environ.get("SMTP_PORT", "465"))
@@ -17,8 +19,8 @@ msg.set_content(os.environ.get("EMAIL_BODY", "Attached: daily mismatch reports (
 
 # attachments we expect (the script writes to /content/)
 candidate_paths = [
-    "/content/mismatch_report.xlsx",
-    "/content/brochure_report.xlsx",
+   os.path.join(WORKDIR, "mismatch_report.xlsx"),
+    os.path.join(WORKDIR, "brochure_report.xlsx"),
 ]
 
 attached = 0
