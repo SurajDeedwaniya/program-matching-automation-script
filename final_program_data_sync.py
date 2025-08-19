@@ -35,7 +35,6 @@ import logging
 import sys
 import difflib
 import unicodedata
-from tabulate import tabulate
 from datetime import datetime
 import requests
 import json
@@ -43,7 +42,6 @@ import re
 import logging
 import sys
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 from tabulate import tabulate
 from difflib import SequenceMatcher
 
@@ -473,25 +471,26 @@ def run_semantic_validation():
     import json
     import time
     import re
-    import google.generativeai as genai
+    import requests
     from tqdm import tqdm
+    from send_email import send_custom_email
 
-    if not os.environ.get("GEMINI_API_KEY"):
-       print("⚠️ GEMINI_API_KEY not found in environment — semantic validation will be skipped.")
-       return
+    # 🔑 Multiple OpenRouter API keys from GitHub Actions secrets
+    API_KEYS = [
+        os.environ.get("api_key1", ""),
+        os.environ.get("api_key2", ""),
+        os.environ.get("api_key3", "")
+    ]
+    current_key_index = 0
+    os.environ["OPENROUTER_API_KEY"] = API_KEYS[current_key_index]
 
-     # 🔐 Add your actual API key here
-
-    # ✅ Initialize Gemini
-    genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-    model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
 
     # ✅ Load mismatches from Agent 2
-    with open(os.path.join(WORKDIR,"mismatch_report.json"), "r") as f:
+    with open(os.path.join(WORKDIR, "mismatch_report.json"), "r") as f:
         mismatches = json.load(f)
 
     # ✅ Load existing match file (may be empty)
-    match_file_path = os.path.join(WORKDIR,"match_report.json")
+    match_file_path = os.path.join(WORKDIR, "match_report.json")
     if os.path.exists(match_file_path):
         with open(match_file_path, "r") as f:
             matched = json.load(f)
@@ -500,7 +499,7 @@ def run_semantic_validation():
 
     validated = []
 
-    print("🧠 Cleaning mismatches using Gemini...\n")
+    print("🧠 Cleaning mismatches using OpenRouter (free models)...\n")
 
     def normalize_date(text):
         text = text.lower().strip()
@@ -518,6 +517,59 @@ def run_semantic_validation():
 
     # ✅ Track ids in original mismatch
     all_ids_with_mismatches = {m['id'] for m in mismatches}
+
+    def call_openrouter(prompt):
+        nonlocal current_key_index
+
+        while current_key_index < len(API_KEYS):
+            os.environ["OPENROUTER_API_KEY"] = API_KEYS[current_key_index]
+            try:
+                response = requests.post(
+                    "https://openrouter.ai/api/v1/chat/completions",
+                    headers={
+                        "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": "openai/gpt-oss-20b:free",
+                        "messages": [{"role": "user", "content": prompt}],
+                    },
+                    timeout=30
+                )
+
+                if response.status_code == 429:  # Rate limit error
+                    err = response.json()
+                    if "per-minute" in err.get("error", {}).get("message", "").lower():
+                        reset_time = int(response.headers.get("x-ratelimit-reset", time.time() + 10))
+                        wait_for = max(reset_time - int(time.time()), 10)
+                        print(f"⏳ Hit per-minute limit on key {current_key_index+1}, waiting {wait_for} seconds...")
+                        time.sleep(wait_for)
+                        continue  # retry same key
+                    elif "per-day" in err.get("error", {}).get("message", "").lower():
+                        print(f"⚠️ Daily limit reached for key {current_key_index+1}, switching to next key...")
+                        send_custom_email(
+                            to=["alerts-team@yourcompany.com"],
+                            cc=["lead@yourcompany.com"],
+                            subject="⚠️ API Key Expired",
+                            body=f"The API key at index {current_key_index+1} has expired. Switching to the next key."
+                        )
+                        current_key_index += 1
+                        continue  # try next key
+                return response.json()
+
+            except Exception as e:
+                print("⚠️ Error with OpenRouter:", e)
+                time.sleep(5)
+
+        print("❌ All API keys exhausted, cannot process further.")
+        print("❌ All API keys exhausted, cannot process further.")
+        send_custom_email(
+            to=["alerts-team@yourcompany.com"],
+            cc=["lead@yourcompany.com"],
+            subject="🚨 All API Keys Expired",
+            body="All configured API keys have expired. Please add new keys immediately."
+        )
+        return None
 
     for m in tqdm(mismatches):
         field = m.get("field", "").lower()
@@ -557,19 +609,24 @@ def run_semantic_validation():
             "🚫 Respond ONLY with a single word: 'Yes' if the values mean the same, or 'No' if they are different.\n"
         )
 
-        try:
-            response = model.generate_content(prompt)
-            decision = response.text.strip().lower()
+        resp_json = None
+        while resp_json is None and current_key_index < len(API_KEYS):  # keep retrying until success or all keys exhausted
+            resp_json = call_openrouter(prompt)
+            if resp_json is None and current_key_index < len(API_KEYS):
+                print("⚠️ Retrying with next available key...")
+                continue
+
+        if resp_json and "choices" in resp_json:
+            decision = resp_json["choices"][0]["message"]["content"].strip().lower()
             if "no" in decision:
                 validated.append(m)
-        except Exception as e:
-            print("⚠️ Error with Gemini:", e)
+        else:
             validated.append(m)
 
         time.sleep(1)
 
     # ✅ Save cleaned mismatches
-    with open(os.path.join(WORKDIR,"validated_mismatches.json"), "w") as f:
+    with open(os.path.join(WORKDIR, "validated_mismatches.json"), "w") as f:
         json.dump(validated, f, indent=2)
 
     print(f"\n✅ Cleaned mismatches saved to validated_mismatches.json")

@@ -8,6 +8,28 @@ on:
 jobs:
   run-report:
     runs-on: ubuntu-latest
+    env:
+      # --- Gmail OAuth2 for send_email.py ---
+      EMAIL_API_CLIENT_ID:     ${{ secrets.EMAIL_API_CLIENT_ID }}
+      EMAIL_API_CLIENT_SECRET: ${{ secrets.EMAIL_API_CLIENT_SECRET }}
+      EMAIL_API_REQUEST_URI:   ${{ secrets.EMAIL_API_REQUEST_URI }}
+      EMAIL_API_ACCESS_TOKEN:  ${{ secrets.EMAIL_API_ACCESS_TOKEN }}
+      EMAIL_API_REFRESH_TOKEN: ${{ secrets.EMAIL_API_REFRESH_TOKEN }}
+      EMAIL_FROM:              ${{ secrets.EMAIL_FROM }}
+      EMAIL_TO:                ${{ secrets.EMAIL_TO }}
+      # optional:
+      EMAIL_CC: ${{ secrets.EMAIL_CC }}
+      EMAIL_BCC: ${{ secrets.EMAIL_BCC }}
+      EMAIL_SUBJECT: "Daily Program & Brochure Reports"
+      EMAIL_BODY:    "Attached: daily mismatch reports (if any)."
+
+      # --- OpenRouter keys used by final_program_data_sync.py ---
+      api_key1: ${{ secrets.OPENROUTER_KEY_1 }}
+      api_key2: ${{ secrets.OPENROUTER_KEY_2 }}
+      api_key3: ${{ secrets.OPENROUTER_KEY_3 }}
+      # Set to "true" to skip semantic validation entirely:
+      SKIP_SEMANTIC_VALIDATION: ${{ secrets.SKIP_SEMANTIC_VALIDATION }}
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
