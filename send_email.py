@@ -32,7 +32,7 @@ def build_gmail_service():
 # --- Create Email Message ---
 def create_message(to, subject, body, attachments=None, cc=None, bcc=None, reply_to=None):
     msg = MIMEMultipart()
-    msg["From"] = os.environ.get("EMAIL_FROM")
+    msg["From"] = "info@accredian.com"
     msg["To"] = ", ".join(to if isinstance(to, list) else [to])
     msg["Subject"] = subject
 
@@ -77,19 +77,53 @@ def send_custom_email(to, subject, body, attachments=None, cc=None, bcc=None, re
 
 # --- Daily Report Email ---
 def send_report_email():
-    to = os.environ["EMAIL_TO"].split(",")
-    subject = os.environ.get("EMAIL_SUBJECT", "Daily Program & Brochure Reports")
-    body = os.environ.get("EMAIL_BODY", "Attached: daily mismatch reports (if any).")
+    import os
+    from datetime import datetime
+
+    # ✅ Static recipients
+    to = ["suraj.deedwaniya@accredian.com"]   # <-- change as needed
+    cc = [""]                          # optional
+    bcc = [""]                        # optional
+    reply_to = ""
+
+    # ✅ Dynamic subject with date
+    today = datetime.now().strftime("%d %B %Y")
+    subject = f"📊 Daily Program & Brochure Validation Report – {today}"
+
+    # ✅ Professional message body
+    body = f"""
+            Hello Team,
+
+            Please find attached the latest validation reports for **Programs & Brochures** as of {today}.
+
+            Reports Included:
+            - 📑 Mismatch Report (program vs. sheet data)
+            - 📑 Brochure Report (extracted vs. sheet data)
+
+            This is an automated email. If you have any questions or notice discrepancies, 
+            please reply to this thread.
+
+            Best regards,  
+            Automated Validation Bot 🤖
+        """
+
+    # ✅ Attachments
     attachments = [
         os.path.join(WORKDIR, "mismatch_report.xlsx"),
         os.path.join(WORKDIR, "brochure_report.xlsx"),
     ]
-    # You can also set EMAIL_CC, EMAIL_BCC, EMAIL_REPLY_TO in env
-    cc = os.environ.get("EMAIL_CC", "").split(",") if os.environ.get("EMAIL_CC") else None
-    bcc = os.environ.get("EMAIL_BCC", "").split(",") if os.environ.get("EMAIL_BCC") else None
-    reply_to = os.environ.get("EMAIL_REPLY_TO")
 
-    send_custom_email(to, subject, body, attachments, cc=cc, bcc=bcc, reply_to=reply_to)
+    # ✅ Send email
+    send_custom_email(
+        to,
+        subject,
+        body,
+        attachments,
+        cc=cc,
+        bcc=bcc,
+        reply_to=reply_to
+    )
+
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@ name: Daily Program & Brochure Reports
 on:
   schedule:
     - cron: '30 12 * * *'  # 18:00 IST daily
-  workflow_dispatch: {}     # allow manual run
+  workflow_dispatch:       # allow manual run
 
 jobs:
   run-report:
@@ -57,18 +57,9 @@ jobs:
         env:
           WORKDIR: ${{ github.workspace }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          SKIP_SEMANTIC_VALIDATION: ${{ secrets.SKIP_SEMANTIC_VALIDATION }}
         run: |
           python final_program_data_sync.py
 
-      - name: Send email with attachments
-        env:
-          WORKDIR: ${{ github.workspace }}
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+      - name: Send email with reports
         run: |
           python send_email.py
