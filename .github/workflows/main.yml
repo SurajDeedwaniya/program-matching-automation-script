@@ -24,9 +24,9 @@ jobs:
       EMAIL_BODY:    "Attached: daily mismatch reports (if any)."
 
       # --- OpenRouter keys used by final_program_data_sync.py ---
-      api_key1: ${{ secrets.OPENROUTER_KEY_1 }}
-      api_key2: ${{ secrets.OPENROUTER_KEY_2 }}
-      api_key3: ${{ secrets.OPENROUTER_KEY_3 }}
+      API_KEY1: ${{ secrets.API_KEY1 }}
+      API_KEY2: ${{ secrets.API_KEY2 }}
+      API_KEY3: ${{ secrets.API_KEY3 }}
       # Set to "true" to skip semantic validation entirely:
       SKIP_SEMANTIC_VALIDATION: ${{ secrets.SKIP_SEMANTIC_VALIDATION }}
 
