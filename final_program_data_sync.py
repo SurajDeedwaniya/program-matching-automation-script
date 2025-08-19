@@ -561,12 +561,26 @@ def run_semantic_validation():
                             cc=[],
                             subject=f"⚠️ {key_in_use} Expired – Switched to Next Key",
                             body=(
-                                f"Hello Team,\n\n"
-                                f"The API key `{key_in_use}` has reached its daily usage limit.\n"
-                                f"The system has automatically switched to the next available key.\n\n"
-                                f"No manual action is required at this stage, but please keep an eye on overall key usage.\n\n"
-                                f"Best regards,\n"
-                                f"Accredian Automated Validation Bot 🤖"
+                                f"""
+                                <html>
+                                <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+                                    <p>Hello Team,</p>
+                                    <p>
+                                        The API key <b>{key_in_use}</b> has reached its <b>daily usage limit</b>.<br>
+                                        The system has automatically switched to the next available key.
+                                    </p>
+                                    <p>
+                                        ✅ No manual action is required at this stage.<br>
+                                        ⚠️ Please keep an eye on overall key usage.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        Best regards,<br>
+                                        <b>Accredian Automated Validation Bot 🤖</b>
+                                    </p>
+                                </body>
+                                </html>
+                                """
                             )
                         )
                         current_key_index += 1
@@ -583,16 +597,35 @@ def run_semantic_validation():
             cc=[],
             subject="🚨 All API Keys Exhausted – Immediate Action Required",
             body=(
-                f"Hello Team,\n\n"
-                f"All configured API keys have been exhausted and validation can no longer continue.\n\n"
-                f"⚠️ Immediate action is required:\n"
-                f"- Please add new API keys in the GitHub Actions secrets.\n"
-                f"- Re-run the workflow after updating the configuration.\n\n"
-                f"Until new keys are added, no further program validation can be performed.\n\n"
-                f"Best regards,\n"
-                f"Accredian Automated Validation Bot 🤖"
+                """
+                <html>
+                <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+                    <p>Hello Team,</p>
+            
+                    <p>🚨 <b>All configured API keys have been exhausted</b> and validation can no longer continue.</p>
+
+                    <p><b>⚠️ Immediate action is required:</b></p>
+                    <ul>
+                        <li>Please add new API keys in the GitHub Actions secrets.</li>
+                        <li>Re-run the workflow after updating the configuration.</li>
+                    </ul>
+
+                    <p>
+                        Until new keys are added, no further program validation can be performed.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Best regards,<br>
+                        <b>Accredian Automated Validation Bot 🤖</b>
+                    </p>
+                </body>
+                </html>
+                """
             )
         )
+
         return None
 
     for m in tqdm(mismatches):

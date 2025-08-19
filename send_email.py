@@ -92,17 +92,35 @@ def send_report_email():
     subject = f"📊 Daily Program & Brochure Validation Report – {today}"
 
     # ✅ Properly formatted plain-text body with newlines
-    body = (
-        f"Hello Team,\n\n"
-        f"Please find attached the latest validation reports for **Programs & Brochures** as of {today}.\n\n"
-        f"Reports Included:\n"
-        f"- 📑 Mismatch Report (program vs. sheet data)\n"
-        f"- 📑 Brochure Report (extracted vs. sheet data)\n\n"
-        f"This is an automated email. If you have any questions or notice discrepancies,\n"
-        f"please reply to this thread.\n\n"
-        f"Best regards,\n"
-        f"Accredian Automated Validation Bot 🤖"
-    )
+    body = f"""
+    <html>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <p>Hello Team,</p>
+
+        <p>
+            Please find attached the latest validation reports for 
+            <b>Programs &amp; Brochures</b> as of {today}.
+        </p>
+
+        <p><b>Reports Included:</b></p>
+        <ul>
+            <li>📑 Mismatch Report (program vs. sheet data)</li>
+            <li>📑 Brochure Report (extracted vs. sheet data)</li>
+        </ul>
+
+        <p>
+            This is an automated email. If you have any questions or notice discrepancies,<br>
+            please reply to this thread.
+        </p>
+
+        <p>
+            Best regards,<br>
+            <b>Accredian Automated Validation Bot 🤖</b>
+        </p>
+    </body>
+    </html>
+    """
+
 
     # ✅ Attachments
     attachments = [
