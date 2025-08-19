@@ -484,7 +484,6 @@ def run_semantic_validation():
     current_key_index = 0
     os.environ["OPENROUTER_API_KEY"] = API_KEYS[current_key_index]
 
-
     # ✅ Load mismatches from Agent 2
     with open(os.path.join(WORKDIR, "mismatch_report.json"), "r") as f:
         mismatches = json.load(f)
@@ -523,6 +522,10 @@ def run_semantic_validation():
 
         while current_key_index < len(API_KEYS):
             os.environ["OPENROUTER_API_KEY"] = API_KEYS[current_key_index]
+            key_in_use = f"api_key{current_key_index+1}"
+
+            print(f"🔑 Using {key_in_use} for this request...")
+
             try:
                 response = requests.post(
                     "https://openrouter.ai/api/v1/chat/completions",
@@ -537,23 +540,29 @@ def run_semantic_validation():
                     timeout=30
                 )
 
+                # Log whether call succeeded or not
+                if response.status_code == 200:
+                    print(f"✅ API call successful with {key_in_use}")
+                else:
+                    print(f"⚠️ API call made with {key_in_use} but failed (status {response.status_code})")
+
                 if response.status_code == 429:  # Rate limit error
                     err = response.json()
                     if "per-minute" in err.get("error", {}).get("message", "").lower():
                         reset_time = int(response.headers.get("x-ratelimit-reset", time.time() + 10))
                         wait_for = max(reset_time - int(time.time()), 10)
-                        print(f"⏳ Hit per-minute limit on key {current_key_index+1}, waiting {wait_for} seconds...")
+                        print(f"⏳ Hit per-minute limit on {key_in_use}, waiting {wait_for} seconds...")
                         time.sleep(wait_for)
                         continue  # retry same key
                     elif "per-day" in err.get("error", {}).get("message", "").lower():
-                        print(f"⚠️ Daily limit reached for key {current_key_index+1}, switching to next key...")
+                        print(f"⚠️ Daily limit reached for {key_in_use}, switching to next key...")
                         send_custom_email(
                             to=["suraj.deedwaniya@accredian.com"],
                             cc=[],
-                            subject=f"⚠️ API Key {current_key_index+1} Expired – Switched to Next Key",
+                            subject=f"⚠️ {key_in_use} Expired – Switched to Next Key",
                             body=(
                                 f"Hello Team,\n\n"
-                                f"The API key at index {current_key_index+1} has reached its daily usage limit.\n"
+                                f"The API key `{key_in_use}` has reached its daily usage limit.\n"
                                 f"The system has automatically switched to the next available key.\n\n"
                                 f"No manual action is required at this stage, but please keep an eye on overall key usage.\n\n"
                                 f"Best regards,\n"
@@ -565,11 +574,10 @@ def run_semantic_validation():
                 return response.json()
 
             except Exception as e:
-                print("⚠️ Error with OpenRouter:", e)
+                print(f"⚠️ Error with {key_in_use}: {e}")
                 time.sleep(5)
 
-        print("❌ All API keys exhausted, cannot process further.")
-        print("❌ All API keys exhausted, cannot process further.")
+        print("❌ All API keys exhausted, no more API calls will be made.")
         send_custom_email(
             to=["suraj.deedwaniya@accredian.com"],
             cc=[],
@@ -605,6 +613,7 @@ def run_semantic_validation():
 
         # Skip if values match after normalization
         if not sheet_val or not json_val or sheet_val == json_val:
+            print(f"ℹ️ Skipping API call because values match after normalization: {sheet_val_raw} vs {json_val_raw}")
             continue
 
         prompt = (
@@ -674,11 +683,10 @@ def run_semantic_validation():
 
     print(f"🎉 Added {len(resolved_ids)} fully matched programs to match_report.json")
 
-
     common_status_report = []
 
     all_matched_ids = {m['id'] for m in matched}
-    all_invalid_ids = {m['id'] for m in validated}  # validated mismatches = actual mismatches after Gemini
+    all_invalid_ids = {m['id'] for m in validated}  # validated mismatches = actual mismatches after API validation
 
     for entry in id_entries:
         program_id = entry.get("id")
@@ -695,8 +703,6 @@ def run_semantic_validation():
             "program_name": program_name,
             "status": status
         })
-
-
 
     # ✅ Save common status report
     with open(os.path.join(WORKDIR,"program_status_summary.json"), "w") as f:
