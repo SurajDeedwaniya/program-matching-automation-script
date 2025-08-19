@@ -76,36 +76,33 @@ def send_custom_email(to, subject, body, attachments=None, cc=None, bcc=None, re
 
 
 # --- Daily Report Email ---
+# --- Daily Report Email ---
 def send_report_email():
     import os
     from datetime import datetime
 
     # ✅ Static recipients
     to = ["suraj.deedwaniya@accredian.com"]   # <-- change as needed
-    cc = [""]                          # optional
-    bcc = [""]                        # optional
+    cc = []
+    bcc = []
     reply_to = ""
 
     # ✅ Dynamic subject with date
     today = datetime.now().strftime("%d %B %Y")
     subject = f"📊 Daily Program & Brochure Validation Report – {today}"
 
-    # ✅ Professional message body
-    body = f"""
-            Hello Team,
-
-            Please find attached the latest validation reports for **Programs & Brochures** as of {today}.
-
-            Reports Included:
-            - 📑 Mismatch Report (program vs. sheet data)
-            - 📑 Brochure Report (extracted vs. sheet data)
-
-            This is an automated email. If you have any questions or notice discrepancies, 
-            please reply to this thread.
-
-            Best regards,  
-            Automated Validation Bot 🤖
-        """
+    # ✅ Properly formatted plain-text body with newlines
+    body = (
+        f"Hello Team,\n\n"
+        f"Please find attached the latest validation reports for **Programs & Brochures** as of {today}.\n\n"
+        f"Reports Included:\n"
+        f"- 📑 Mismatch Report (program vs. sheet data)\n"
+        f"- 📑 Brochure Report (extracted vs. sheet data)\n\n"
+        f"This is an automated email. If you have any questions or notice discrepancies,\n"
+        f"please reply to this thread.\n\n"
+        f"Best regards,\n"
+        f"Accredian Automated Validation Bot 🤖"
+    )
 
     # ✅ Attachments
     attachments = [
@@ -123,7 +120,6 @@ def send_report_email():
         bcc=bcc,
         reply_to=reply_to
     )
-
 
 
 if __name__ == "__main__":

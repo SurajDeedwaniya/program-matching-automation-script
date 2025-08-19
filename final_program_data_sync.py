@@ -549,9 +549,16 @@ def run_semantic_validation():
                         print(f"⚠️ Daily limit reached for key {current_key_index+1}, switching to next key...")
                         send_custom_email(
                             to=["suraj.deedwaniya@accredian.com"],
-                            cc=[""],
-                            subject="⚠️ API Key Expired",
-                            body=f"The API key at index {current_key_index+1} has expired. Switching to the next key."
+                            cc=[],
+                            subject=f"⚠️ API Key {current_key_index+1} Expired – Switched to Next Key",
+                            body=(
+                                f"Hello Team,\n\n"
+                                f"The API key at index {current_key_index+1} has reached its daily usage limit.\n"
+                                f"The system has automatically switched to the next available key.\n\n"
+                                f"No manual action is required at this stage, but please keep an eye on overall key usage.\n\n"
+                                f"Best regards,\n"
+                                f"Accredian Automated Validation Bot 🤖"
+                            )
                         )
                         current_key_index += 1
                         continue  # try next key
@@ -565,9 +572,18 @@ def run_semantic_validation():
         print("❌ All API keys exhausted, cannot process further.")
         send_custom_email(
             to=["suraj.deedwaniya@accredian.com"],
-            cc=[""],
-            subject="🚨 All API Keys Expired",
-            body="All configured API keys have expired. Please add new keys immediately."
+            cc=[],
+            subject="🚨 All API Keys Exhausted – Immediate Action Required",
+            body=(
+                f"Hello Team,\n\n"
+                f"All configured API keys have been exhausted and validation can no longer continue.\n\n"
+                f"⚠️ Immediate action is required:\n"
+                f"- Please add new API keys in the GitHub Actions secrets.\n"
+                f"- Re-run the workflow after updating the configuration.\n\n"
+                f"Until new keys are added, no further program validation can be performed.\n\n"
+                f"Best regards,\n"
+                f"Accredian Automated Validation Bot 🤖"
+            )
         )
         return None
 
