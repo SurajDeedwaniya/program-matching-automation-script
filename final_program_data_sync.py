@@ -477,9 +477,9 @@ def run_semantic_validation():
 
     # 🔑 Multiple OpenRouter API keys from GitHub Actions secrets
     API_KEYS = [
-        os.environ.get("api_key1", ""),
-        os.environ.get("api_key2", ""),
-        os.environ.get("api_key3", "")
+        os.environ.get("API_KEY1", ""),
+        os.environ.get("API_KEY2", ""),
+        os.environ.get("API_KEY3", "")
     ]
     current_key_index = 0
     os.environ["OPENROUTER_API_KEY"] = API_KEYS[current_key_index]
