@@ -1,7 +1,7 @@
 name: Daily Program & Brochure Reports
 
 on:
-  # schedule:
+  schedule:
     - cron: '30 12 * * *'  # 18:00 IST daily
   workflow_dispatch: {}     # allow manual run
 
