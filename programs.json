@@ -655,15 +655,15 @@
     "monthly_emi": [
       {
         "months": 12,
-        "emi": 8359
+        "emi": 8850
       },
       {
         "months": 18,
-        "emi": 5796
+        "emi": 6136
       },
       {
         "months": 24,
-        "emi": 4504
+        "emi": 4768
       }
     ],
     "total": 120000,
@@ -726,18 +726,18 @@
         "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/open-ai.webp"
       }
     ],
-    "monthly_emi": [
+     "monthly_emi": [
       {
         "months": 12,
-        "emi": 8850
+        "emi": 12784
       },
       {
         "months": 18,
-        "emi": 6136
+        "emi": 8864
       },
       {
         "months": 24,
-        "emi": 4768
+        "emi": 6888
       }
     ],
     "total": 180000,
