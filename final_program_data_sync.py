@@ -557,8 +557,8 @@ def run_semantic_validation():
                     elif "per-day" in err.get("error", {}).get("message", "").lower():
                         print(f"⚠️ Daily limit reached for {key_in_use}, switching to next key...")
                         send_custom_email(
-                            to=["suraj.deedwaniya@accredian.com"],
-                            cc=[],
+                            to=["vinayak@accredian.com"],
+                            cc=["suraj.deedwaniya@accredian.com"],
                             subject=f"⚠️ {key_in_use} Expired – Switched to Next Key",
                             body=(
                                 f"""
@@ -593,8 +593,8 @@ def run_semantic_validation():
 
         print("❌ All API keys exhausted, no more API calls will be made.")
         send_custom_email(
-            to=["suraj.deedwaniya@accredian.com"],
-            cc=[],
+             to=["vinayak@accredian.com"],
+             cc=["suraj.deedwaniya@accredian.com"],
             subject="🚨 All API Keys Exhausted – Immediate Action Required",
             body=(
                 """

@@ -82,8 +82,8 @@ def send_report_email():
     from datetime import datetime
 
     # ✅ Static recipients
-    to = ["suraj.deedwaniya@accredian.com"]   # <-- change as needed
-    cc = []
+    to = ["hemanka@accredian.com","surbhi.bhatia@accredian.com"]   # <-- change as needed
+    cc = ["suraj.deedwaniya@accredian.com,vinayak@accredian.com"]
     bcc = []
     reply_to = ""
 
