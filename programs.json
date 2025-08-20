@@ -1,5 +1,33 @@
 [
   {
+    "id": "iim-trichy-chief-technology-officer-programme",
+    "university_name": "IIM Tiruchirappalli",
+    "program_name": "Chief Technology Officer Programme (The CTO Program)",
+    "start_date": "26 Oct 2025",
+    "duration": "10 months",
+    "required_years_experience": 10,
+    "monthly_emi": [
+      {
+        "months": 12,
+        "emi": 26019
+      },
+      {
+        "months": 18,
+        "emi": 17976
+      },
+      {
+        "months": 24,
+        "emi": 13924
+      }
+    ],
+    "total": 290000,
+    "brochure": {
+      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMT-chief-technology-officer-programme.pdf",
+      "source": "IIMT Chief Technology Officer Programme (The CTO Program) Brochure",
+      "campaign_name": "IIMT-CTO-10 Months"
+    }
+  },
+  {
     "id": "accelerated-senior-management-program",
     "university_name": "IIM Tiruchirappalli",
     "program_name": "Accelerated Senior Management Programme",
@@ -482,15 +510,15 @@
     "monthly_emi": [
       {
         "months": 12,
-        "emi": 22767
+        "emi": 21683
       },
       {
         "months": 18,
-        "emi": 15729
+        "emi": 14980
       },
       {
         "months": 24,
-        "emi": 12184
+        "emi": 11604
       }
     ],
     "total": 240000,
@@ -701,15 +729,15 @@
     "monthly_emi": [
       {
         "months": 12,
-        "emi": 12784
+        "emi": 8850
       },
       {
         "months": 18,
-        "emi": 8864
+        "emi": 6136
       },
       {
         "months": 24,
-        "emi": 6888
+        "emi": 4768
       }
     ],
     "total": 180000,
