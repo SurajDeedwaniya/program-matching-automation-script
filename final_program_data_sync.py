@@ -1008,38 +1008,76 @@ def extract_date_parts(text):
         return day, month_num, year
     return None, None, None
 
+# def match_scholarship(val, page_text):
+#     val = val.strip()
+#     page_text_clean = page_text.lower().replace('\n', ' ').replace('\r', '')
+
+#     # Extract date from sheet and brochure
+#     sheet_day, sheet_month, sheet_year = extract_date_parts(val)
+#     brochure_dates = re.findall(r'(\d{1,2})(st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december),?\s*(\d{4})?', page_text_clean)
+
+#     date_found = False
+#     for d, _, m, y in brochure_dates:
+#         b_day = int(d)
+#         b_month = MONTHS_MAP.get(m.lower())
+#         b_year = int(y) if y else None
+
+#         if sheet_day == b_day and sheet_month == b_month:
+#             date_found = True
+#             break
+
+#     # Extract amount from sheet and brochure
+#     amount_match = re.search(r'(\d{1,3}(,\d{3})+|\d{5,7})', val.replace(',', ''))
+#     sheet_amount = normalize_price(amount_match.group(0)) if amount_match else None
+
+#     amount_found = False
+#     for amt in re.findall(r'(inr)?\s*([\d.,]+)\s*(l|lakhs|k|thousand)?', page_text_clean):
+#         amt_str = ''.join(amt)
+#         brochure_amount = normalize_price(amt_str)
+#         if brochure_amount == sheet_amount:
+#             amount_found = True
+#             break
+
+#     return date_found and amount_found
+
+
 def match_scholarship(val, page_text):
     val = val.strip()
     page_text_clean = page_text.lower().replace('\n', ' ').replace('\r', '')
 
-    # Extract date from sheet and brochure
-    sheet_day, sheet_month, sheet_year = extract_date_parts(val)
-    brochure_dates = re.findall(r'(\d{1,2})(st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december),?\s*(\d{4})?', page_text_clean)
-
-    date_found = False
-    for d, _, m, y in brochure_dates:
-        b_day = int(d)
-        b_month = MONTHS_MAP.get(m.lower())
-        b_year = int(y) if y else None
-
-        if sheet_day == b_day and sheet_month == b_month:
-            date_found = True
-            break
-
-    # Extract amount from sheet and brochure
-    amount_match = re.search(r'(\d{1,3}(,\d{3})+|\d{5,7})', val.replace(',', ''))
+    # --- Extract amount from sheet ---
+    amount_match = re.search(r'(\d{1,3}(,\d{3})+|\d{4,7})', val.replace(',', ''))
     sheet_amount = normalize_price(amount_match.group(0)) if amount_match else None
 
-    amount_found = False
+    # --- Extract possible amounts from brochure text ---
+    brochure_amounts = []
     for amt in re.findall(r'(inr)?\s*([\d.,]+)\s*(l|lakhs|k|thousand)?', page_text_clean):
         amt_str = ''.join(amt)
-        brochure_amount = normalize_price(amt_str)
-        if brochure_amount == sheet_amount:
-            amount_found = True
-            break
+        brochure_amounts.append(normalize_price(amt_str))
 
-    return date_found and amount_found
+    # --- Case 1: Table format (date + amount) ---
+    sheet_day, sheet_month, sheet_year = extract_date_parts(val)
+    if sheet_day and sheet_month:
+        brochure_dates = re.findall(
+            r'(\d{1,2})(st|nd|rd|th)?\s+'
+            r'(january|february|march|april|may|june|july|august|september|october|november|december),?\s*(\d{4})?',
+            page_text_clean
+        )
+        for d, _, m, y in brochure_dates:
+            b_day = int(d)
+            b_month = MONTHS_MAP.get(m.lower())
+            if sheet_day == b_day and sheet_month == b_month:
+                if sheet_amount in brochure_amounts:
+                    return True
+        return False
 
+    # --- Case 2: Single-line scholarship (amount only) ---
+    if sheet_amount in brochure_amounts:
+        # also check for scholarship-related keywords
+        if re.search(r'scholarship|upto', page_text_clean):
+            return True
+
+    return False
 
 
 # ✅ Orientation date matcher
@@ -1137,6 +1175,11 @@ def check_brochure_mismatches():
                             return pg_num, val_cleaned
 
                     elif field in ['r1 scholarship', 'r2 scholarship','r3 scholarship']:
+                        
+                        if sheet_name.strip().lower() == "xlri | xlead":
+                          logging.info("⏭️ Skipping scholarship validation for sheet: %s", sheet_name)
+                          continue
+                      
                         if match_scholarship(norm_sheet_val, pg_text):
                             return pg_num, norm_sheet_val
 
