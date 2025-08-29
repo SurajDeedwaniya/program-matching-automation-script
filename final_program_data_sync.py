@@ -511,8 +511,22 @@ def run_semantic_validation():
         text = text.replace('.', '')
         return text
 
+    def normalize_placeholder(text):
+        """Convert placeholders like N.A., None, [], null to a common value"""
+        text = text.strip().lower()
+        if text in ["n.a.", "na", "n.a", "none", "null", "[]", "{}", ""]:
+            return "placeholder"
+        return text
+
     def normalize_experience(text):
-        return re.sub(r'[^0-9]', '', text)
+        """Convert experience to int, treating 0 and 1+ as equivalent"""
+        digits = re.findall(r'\d+', text)
+        if not digits:
+            return "0"
+        num = int(digits[0])
+        if num == 0 or num == 1:  # treat 0 and 1+ as same (entry-level)
+            return "entry"
+        return str(num)
 
     # ✅ Track ids in original mismatch
     all_ids_with_mismatches = {m['id'] for m in mismatches}
@@ -641,8 +655,8 @@ def run_semantic_validation():
             sheet_val = normalize_experience(sheet_val_raw)
             json_val = normalize_experience(json_val_raw)
         else:
-            sheet_val = sheet_val_raw
-            json_val = json_val_raw
+            sheet_val = normalize_placeholder(sheet_val_raw)
+            json_val = normalize_placeholder(json_val_raw)
 
         # Skip if values match after normalization
         if not sheet_val or not json_val or sheet_val == json_val:
@@ -663,7 +677,7 @@ def run_semantic_validation():
             "- Sheet value includes extra context but the core value is same (e.g., 'Tools: Mural' = 'mural')\n"
             "- Tools match even if JSON has more tools than Sheet (subset is OK)\n"
             "- Ignore case, punctuation, and minor suffix differences (e.g., 'year' vs 'years')\n\n"
-            "- Treat placeholders for 'no data' as equivalent (e.g., 'N.A.', 'NA', 'None', 'null', empty string, or [])\n\n"
+            "- Treat placeholders for 'no data' as equivalent (e.g., 'N.A.', 'NA', 'None', [], 'null', empty string, or [])\n\n"
             "🚫 Respond ONLY with a single word: 'Yes' if the values mean the same, or 'No' if they are different.\n"
         )
 
@@ -1176,9 +1190,9 @@ def check_brochure_mismatches():
 
                     elif field in ['r1 scholarship', 'r2 scholarship','r3 scholarship']:
                         
-                        if sheet_name.strip().lower() == "xlri | xlead":
-                          logging.info("⏭️ Skipping scholarship validation for sheet: %s", sheet_name)
-                          continue
+                        # if sheet_name.strip().lower() == "xlri | xlead":
+                        #   logging.info("⏭️ Skipping scholarship validation for sheet: %s", sheet_name)
+                        #   continue
                       
                         if match_scholarship(norm_sheet_val, pg_text):
                             return pg_num, norm_sheet_val
@@ -1302,6 +1316,11 @@ def check_brochure_mismatches():
                 sheet_val = row[col].strip()
                 if not sheet_val or sheet_val.lower() in ["na", "n.a.", "n.a", "none"]:
                     continue
+                
+                if field in ["r1 scholarship", "r2 scholarship", "r3 scholarship"]:
+                   if sheet_name.strip().lower() == "xlri | xlead":
+                      logging.info("⏭️ Skipping scholarship validation for XLRI sheet: %s", sheet_name)
+                      continue
 
                 logging.info("🔍 Checking '%s': '%s'", field, sheet_val)
                 page, snippet = search_in_pages(sheet_val, field)
