@@ -1131,6 +1131,7 @@ def check_brochure_mismatches():
     all_traversed_ids = []
     allowed_fields = [
         'program name', 'duration', 'retail price',
+        "tools and frameworks"
          'class timings',
         'r1 scholarship', 'r2 scholarship', 'batch start date'
     ]

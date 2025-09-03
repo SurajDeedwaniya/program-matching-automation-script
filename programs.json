@@ -1,5 +1,62 @@
 [
   {
+    "id": "iimv-executive-program-in-leadership-with-ai",
+    "university_name": "IIM Visakhapatnam",
+    "program_name": "Executive Program in Leadership with AI",
+    "start_date": "16 Nov 2025",
+    "required_years_experience": 5,
+    "tools": [
+      {
+        "title": "open AI",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/open-ai.webp"
+      },
+      {
+        "title": "excel",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/microsoft-excel.svg"
+      },
+      {
+        "title": "Lovable",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/lovable.svg"
+      },
+      {
+        "title": "Alteryx",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/alteryx.svg"
+      },
+      {
+        "title": "Gemini",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Gemini.svg"
+      }
+    ],
+    "monthly_emi": [
+      {
+        "months": 12,
+        "emi": 19667
+      },
+      {
+        "months": 18,
+        "emi": 13636
+      },
+      {
+        "months": 24,
+        "emi": 10596
+      }
+    ],
+    "total": 240000,
+    "brochure": {
+      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMV-executive-program-in-leadership-with-ai.pdf",
+      "source": "IIMV Executive Program in Leadership with AI Brochure",
+      "campaign_name": "EPLAI-IIMV-10 Months"
+    },
+    "enrolled": {
+      "referrerBonus": "₹5,000",
+      "refreeBonus": "₹5,000"
+    },
+    "notEnrolled": {
+      "referrerBonus": "₹5,000",
+      "refreeBonus": "₹5,000"
+    }
+  },
+  {
     "id": "iim-trichy-chief-technology-officer-programme",
     "university_name": "IIM Tiruchirappalli",
     "program_name": "Chief Technology Officer Programme (The CTO Program)",
@@ -726,7 +783,7 @@
         "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/open-ai.webp"
       }
     ],
-     "monthly_emi": [
+    "monthly_emi": [
       {
         "months": 12,
         "emi": 12784
