@@ -47,23 +47,45 @@
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMV-executive-program-in-leadership-with-ai.pdf",
       "source": "IIMV Executive Program in Leadership with AI Brochure",
       "campaign_name": "EPLAI-IIMV-10 Months"
-    },
-    "enrolled": {
-      "referrerBonus": "₹5,000",
-      "refreeBonus": "₹5,000"
-    },
-    "notEnrolled": {
-      "referrerBonus": "₹5,000",
-      "refreeBonus": "₹5,000"
+    }
+  },
+  {
+    "id": "executive-general-management-program",
+    "university_name": "IIM Lucknow",
+    "duration": "11 months",
+    "program_name": "Executive General Management Program",
+    "start_date": "30 Nov 2025",
+    "required_years_experience": 1,
+    "tools": [],
+    "monthly_emi": [
+      {
+        "months": 12,
+        "emi": "INR 45658 - INR 46807"
+      },
+      {
+        "months": 18,
+        "emi": "INR 33660 - INR 34966"
+      },
+      {
+        "months": 24,
+        "emi": "INR 28628 - INR 29672"
+      }
+    ],
+    "total": 425000,
+    "brochure": {
+      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIML-Executive-General-Management-Program.pdf",
+      "source": "IIML Executive General Management Program Brochure",
+      "campaign_name": "GM-IIML-11 Months"
     }
   },
   {
     "id": "iim-trichy-chief-technology-officer-programme",
     "university_name": "IIM Tiruchirappalli",
+    "duration": "10 months",
     "program_name": "Chief Technology Officer Programme (The CTO Program)",
     "start_date": "26 Oct 2025",
-    "duration": "10 months",
     "required_years_experience": 10,
+    "tools": [],
     "monthly_emi": [
       {
         "months": 12,
@@ -88,10 +110,24 @@
   {
     "id": "accelerated-senior-management-program",
     "university_name": "IIM Tiruchirappalli",
+    "duration": "10 months",
     "program_name": "Accelerated Senior Management Programme",
     "start_date": "26 Oct 2025",
-    "duration": "10 months",
     "required_years_experience": 10,
+    "tools": [
+      {
+        "title": "power BI",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Power-BI.webp"
+      },
+      {
+        "title": "excel",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/microsoft-excel.svg"
+      },
+      {
+        "title": "R",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/R-language-v1.webp"
+      }
+    ],
     "monthly_emi": [
       {
         "months": 12,
@@ -114,13 +150,13 @@
     }
   },
   {
+    "id": "chief-executive-officer-program",
     "university_name": "IIM Visakhapatnam",
+    "duration": "11 months",
     "program_name": "Chief Executive Officer Program (The CEO Program)",
     "start_date": "14 Dec 2025",
-    "duration": "11 months",
     "required_years_experience": 10,
-    "id": "chief-executive-officer-program",
-    "category": "cxo leadership",
+    "tools": [],
     "monthly_emi": [
       {
         "months": 12,
@@ -138,18 +174,17 @@
     "total": 350000,
     "brochure": {
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMV-Chief-Executive-Officer-Programme.pdf",
-      "source": "IIMV Chief Executive Officer Programme Brochure",
+      "source": "IIMV Chief Executive Officer Program Brochure",
       "campaign_name": "IIMV-CEO-11 Months"
     }
   },
   {
+    "id": "advanced-certificate-program-in-ai-for-leaders",
     "university_name": "E&ICT Academy IIT Kanpur",
+    "duration": "5 Months",
     "program_name": "Advanced Certificate Program in AI for Leaders",
     "start_date": "21 Sep 2025",
-    "duration": "5 Months",
-    "required_years_experience": 0,
-    "id": "advanced-certificate-program-in-ai-for-leaders",
-    "category": "artificial intelligence",
+    "required_years_experience": null,
     "tools": [
       {
         "title": "python",
@@ -202,28 +237,12 @@
     }
   },
   {
+    "id": "professional-certificate-program-in-leadership-with-ai",
     "university_name": "E&ICT Academy IIT Kanpur",
+    "duration": "8 Months",
     "program_name": "Professional Certificate Program in Leadership with AI",
     "start_date": "21 Sep 2025",
-    "duration": "8 Months",
-    "required_years_experience": 0,
-    "id": "professional-certificate-program-in-leadership-with-ai",
-    "category": "artificial intelligence",
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 15178
-      },
-      {
-        "months": 18,
-        "emi": 10486
-      },
-      {
-        "months": 24,
-        "emi": 8123
-      }
-    ],
-    "total": 180000,
+    "required_years_experience": null,
     "tools": [
       {
         "title": "python",
@@ -254,6 +273,21 @@
         "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Gemini.svg"
       }
     ],
+    "monthly_emi": [
+      {
+        "months": 12,
+        "emi": 15178
+      },
+      {
+        "months": 18,
+        "emi": 10486
+      },
+      {
+        "months": 24,
+        "emi": 8123
+      }
+    ],
+    "total": 180000,
     "brochure": {
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IITK-Professional-Certificate-Program-In-Leadership-With-AI.pdf",
       "source": "IITK Professional Certificate Program in Leadership with AI Brochure",
@@ -261,12 +295,11 @@
     }
   },
   {
-    "university_name": "IIM Visakhapatnam",
-    "program_name": "PG Certificate Program in Chief Digital & AI Officer (The CDAIO Program)",
     "id": "pg-certificate-program-in-chief-digital-and-ai-officer-program",
-    "category": "cxo leadership",
-    "start_date": "14 Sep 2025",
+    "university_name": "IIM Visakhapatnam",
     "duration": "11 Months",
+    "program_name": "PG Certificate Program in Chief Digital & AI Officer (The CDAIO Program)",
+    "start_date": "14 Sep 2025",
     "required_years_experience": 10,
     "tools": [
       {
@@ -316,11 +349,11 @@
     }
   },
   {
-    "university_name": "E&ICT Academy IIT Kanpur",
-    "program_name": "Professional Certificate Program in Product Management",
     "id": "professional-certificate-program-in-product-management",
-    "start_date": "24 Aug 2025",
+    "university_name": "E&ICT Academy IIT Kanpur",
     "duration": "6 Months",
+    "program_name": "Professional Certificate Program in Product Management",
+    "start_date": "7 Sep 2025",
     "required_years_experience": 1,
     "tools": [
       {
@@ -374,12 +407,13 @@
     }
   },
   {
-    "university_name": "IIM Visakhapatnam",
-    "program_name": "Chief Technology Officer Programme (The CTO Program)",
-    "start_date": "31 Aug 2025",
-    "duration": "11 months",
-    "required_years_experience": 10,
     "id": "chief-technology-officer-programme",
+    "university_name": "IIM Visakhapatnam",
+    "duration": "11 months",
+    "program_name": "Chief Technology Officer Programme (The CTO Program)",
+    "start_date": "21 Sep 2025",
+    "required_years_experience": 10,
+    "tools": [],
     "monthly_emi": [
       {
         "months": 11,
@@ -402,11 +436,13 @@
     }
   },
   {
+    "id": "executive-development-program-in-digital-hr-leadership-&-people-analytics",
     "university_name": "XLRI",
-    "program_name": "Executive Development Programme in Digital HR Leadership and People Analytics",
-    "start_date": "27 July 2025",
     "duration": "10 months",
+    "program_name": "Executive Development Programme in Digital HR Leadership and People Analytics",
+    "start_date": "6 Sep 2025",
     "required_years_experience": 3,
+    "tools": [],
     "monthly_emi": [
       {
         "months": 12,
@@ -422,9 +458,6 @@
       }
     ],
     "total": 240000,
-
-    "id": "executive-development-program-in-digital-hr-leadership-&-people-analytics",
-
     "brochure": {
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/Executive-Development-Programme-in-Digital-HR-Leadership-and-People-Analytics.pdf",
       "source": "XLRI Executive Development Programme in Digital HR Leadership and People Analytics Brochure",
@@ -432,28 +465,28 @@
     }
   },
   {
-    "university_name": "IIM Visakhapatnam",
-    "program_name": "Global Senior Leadership Program",
-    "start_date": "30 Aug 2025",
-    "duration": "12 Months",
-    "required_years_experience": 10,
     "id": "global-senior-leadership-program",
+    "university_name": "IIM Visakhapatnam",
+    "duration": "12 Months",
+    "program_name": "Global Senior Leadership Program",
+    "start_date": "23 Nov 2025",
+    "required_years_experience": 10,
     "tools": [],
     "monthly_emi": [
       {
         "months": 12,
-        "emi": 32450
+        "emi": 33434
       },
       {
         "months": 18,
-        "emi": 22499
+        "emi": 23181
       },
       {
         "months": 24,
-        "emi": 17483
+        "emi": 18013
       }
     ],
-    "total": 380000,
+    "total": 390000,
     "brochure": {
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMV-Global-Senior-Leadership-Program.pdf",
       "source": "IIMV Global Senior Leadership Program Brochure",
@@ -461,81 +494,13 @@
     }
   },
   {
-    "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Post Graduate Certificate Program in Cybersecurity for Leaders",
-    "id": "post-graduate-certificate-program-in-cybersecurity-for-leaders",
-    "start_date": "27 July 2025",
-    "duration": "6 Months",
-    "required_years_experience": 0,
-    "tools": [
-      {
-        "title": "jira",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/jira.webp"
-      },
-      {
-        "title": "miro",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/miro.webp"
-      },
-      {
-        "title": "Cyberbit",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Cyberbit.webp"
-      },
-      {
-        "title": "Metasploit",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Metasploit.webp"
-      },
-      {
-        "title": "Wireshark",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Wireshark.webp"
-      },
-      {
-        "title": "Nmap",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/nmap.webp"
-      },
-      {
-        "title": "ThreatConnect",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/ThreatConnect.webp"
-      },
-      {
-        "title": "CrowdStrike",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/crowdstrike.webp"
-      },
-      {
-        "title": "Splunk",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Splunk.webp"
-      },
-      {
-        "title": "Darktrace",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/darktrace.webp"
-      }
-    ],
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 10817
-      },
-      {
-        "months": 18,
-        "emi": 7500
-      },
-      {
-        "months": 24,
-        "emi": 5828
-      }
-    ],
-    "total": 140000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IITG-Post-Graduate-Certificate-Program-in-Cybersecurity-for-Leaders.pdf",
-      "source": "IITG Cybersecurity for Leaders Brochure",
-      "campaign_name": "CSL-IITG-6 Months"
-    }
-  },
-  {
+    "id": "executive-program-in-strategy-leadership",
     "university_name": "XLRI",
-    "program_name": "Executive Development Program in Strategy & Leadership",
-    "start_date": "23 Nov 2025",
     "duration": "11 months",
+    "program_name": "Executive Development Program in Strategy & Leadership",
+    "start_date": "16 Nov 2025",
     "required_years_experience": 8,
+    "tools": [],
     "monthly_emi": [
       {
         "months": 12,
@@ -551,7 +516,6 @@
       }
     ],
     "total": 280000,
-    "id": "executive-program-in-strategy-leadership",
     "brochure": {
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/XLRI-Executive-Development-Program-in-Strategy-and-Leadership.pdf",
       "source": "Executive Development Program in Strategy & Leadership Brochure",
@@ -559,40 +523,12 @@
     }
   },
   {
-    "university_name": "XLRI",
-    "program_name": "Executive Development Program in Strategic HR Leadership",
-    "id": "executive-development-program-strategic-hr-leadership",
-    "start_date": "26 Oct 2025",
-    "duration": "10 months",
-    "required_years_experience": 8,
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 21683
-      },
-      {
-        "months": 18,
-        "emi": 14980
-      },
-      {
-        "months": 24,
-        "emi": 11604
-      }
-    ],
-    "total": 240000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/XLRI-Executive-Development-Program-in-Strategic-HR-Leadership.pdf",
-      "source": "XLRI Executive Development Program in Strategic HR Leadership Brochure",
-      "campaign_name": "EDPSHR-XLRI-10 Months"
-    }
-  },
-  {
-    "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Executive Program in Product Management & AI for Leaders",
     "id": "executive-program-in-product-management-ai-for-leaders",
-    "start_date": "27 Sep 2025",
+    "university_name": "E&ICT Academy IIT Guwahati",
     "duration": "11 Months",
-    "required_years_experience": 0,
+    "program_name": "Executive Program in Product Management & AI for Leaders",
+    "start_date": "27 Sep 2025",
+    "required_years_experience": null,
     "tools": [
       {
         "title": "jira",
@@ -614,7 +550,6 @@
         "title": "mural",
         "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/mural.webp"
       },
-
       {
         "title": "python",
         "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Python.webp"
@@ -654,163 +589,12 @@
     }
   },
   {
-    "university_name": "XLRI",
-    "program_name": "Executive Development Program in General Management",
-    "start_date": "27 Jul 2025",
-    "duration": "11 months",
-    "required_years_experience": 5,
-    "id": "executive-program-in-general-management",
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 23851
-      },
-      {
-        "months": 18,
-        "emi": 16478
-      },
-      {
-        "months": 24,
-        "emi": 12764
-      }
-    ],
-    "total": 260000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/XLRI-Executive-Development-Program-in-General-Management.pdf",
-      "source": "XLRI General Management Brochure",
-      "campaign_name": "GM-XLRI-11 Months"
-    }
-  },
-  {
+    "id": "executive-program-in-pm",
     "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Post Graduate Certificate Program in Data Science",
-    "start_date": "19 Apr 2025",
-    "duration": "6 Months",
-    "required_years_experience": 0,
-    "id": "pg-certificate-program-in-data-science",
-    "tools": [
-      {
-        "title": "numpy",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/numpy.svg"
-      },
-      {
-        "title": "python",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Python.webp"
-      },
-      {
-        "title": "pandas",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Pandas.svg"
-      },
-      {
-        "title": "seaborn",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/seaborn.webp"
-      },
-      {
-        "title": "colab",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/google-colab.svg"
-      }
-    ],
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 8850
-      },
-      {
-        "months": 18,
-        "emi": 6136
-      },
-      {
-        "months": 24,
-        "emi": 4768
-      }
-    ],
-    "total": 120000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIT-Post-Graduate-Certificate-Program-in-DS-6-months.pdf",
-      "source": "IITG PG Certificate Program in Data Science Brochure",
-      "campaign_name": "PGCPDS-IITG-6 Months"
-    }
-  },
-  {
-    "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Post Graduate Certificate Program in Data Science & Artificial Intelligence",
-    "id": "pg-certificate-program-in-data-science-ai",
-    "start_date": "19 Apr 2025",
-    "duration": "10 Months",
-    "required_years_experience": 0,
-    "tools": [
-      {
-        "title": "seaborn",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/seaborn.webp"
-      },
-      {
-        "title": "pandas",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Pandas.svg"
-      },
-      {
-        "title": "python",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Python.webp"
-      },
-      {
-        "title": "numpy",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/numpy.svg"
-      },
-      {
-        "title": "matplotlib",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Matplotlib.svg"
-      },
-      {
-        "title": "jupyter",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/jupyter.svg"
-      },
-      {
-        "title": "colab",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/google-colab.svg"
-      },
-      {
-        "title": "tensorflow",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/tensorflow.svg"
-      },
-      {
-        "title": "keras",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/keras.webp"
-      },
-      {
-        "title": "GCP",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/google-cloud-console.webp"
-      },
-      {
-        "title": "open AI",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/open-ai.webp"
-      }
-    ],
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 12784
-      },
-      {
-        "months": 18,
-        "emi": 8864
-      },
-      {
-        "months": 24,
-        "emi": 6888
-      }
-    ],
-    "total": 180000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIT-Post-Graduate-Certificate-Program-in-DSAI.pdf",
-      "source": "IITG PG Data Science AI Brochure",
-      "campaign_name": "PGDSAI-10 Months"
-    }
-  },
-  {
-    "university_name": "E&ICT Academy IIT Guwahati",
+    "duration": "8 Months",
     "program_name": "Executive Program in Product Management",
     "start_date": "27 Sep 2025",
-    "duration": "8 Months",
-    "required_years_experience": 0,
+    "required_years_experience": null,
     "tools": [
       {
         "title": "jira",
@@ -836,13 +620,11 @@
         "title": "trello",
         "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/trello.webp"
       },
-
       {
         "title": "open AI",
         "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/open-ai.webp"
       }
     ],
-    "id": "executive-program-in-pm",
     "monthly_emi": [
       {
         "months": 12,
@@ -865,27 +647,12 @@
     }
   },
   {
+    "id": "executive-program-in-project-management-ai-for-leaders",
     "university_name": "E&ICT Academy IIT Guwahati",
+    "duration": "11 Months",
     "program_name": "Executive Program in Project Management & AI for Leaders",
     "start_date": "27 Sep 2025",
-    "duration": "11 Months",
-    "required_years_experience": 0,
-    "id": "executive-program-in-project-management-ai-for-leaders",
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 16717
-      },
-      {
-        "months": 18,
-        "emi": 11591
-      },
-      {
-        "months": 24,
-        "emi": 9007
-      }
-    ],
-    "total": 220000,
+    "required_years_experience": null,
     "tools": [
       {
         "title": "trello",
@@ -928,6 +695,21 @@
         "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/confluence.png"
       }
     ],
+    "monthly_emi": [
+      {
+        "months": 12,
+        "emi": 16717
+      },
+      {
+        "months": 18,
+        "emi": 11591
+      },
+      {
+        "months": 24,
+        "emi": 9007
+      }
+    ],
+    "total": 220000,
     "brochure": {
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IITG-Executive-Program-in-PMT-AI-for-Leaders.pdf",
       "source": "IITG Project Management & AI for Leaders Brochure",
@@ -935,12 +717,12 @@
     }
   },
   {
-    "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Professional Certificate Program in Project Management",
     "id": "professional-certificate-program-in-project-management",
-    "start_date": "27 Sep 2025",
+    "university_name": "E&ICT Academy IIT Guwahati",
     "duration": "6 Months",
-    "required_years_experience": 0,
+    "program_name": "Professional Certificate Program in Project Management",
+    "start_date": "27 Sep 2025",
+    "required_years_experience": null,
     "tools": [
       {
         "title": "toggle",
@@ -985,12 +767,12 @@
     }
   },
   {
-    "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Advanced Certification in Product Management",
     "id": "advanced-certification-in-pm",
-    "start_date": "27 Sep 2025",
+    "university_name": "E&ICT Academy IIT Guwahati",
     "duration": "5 Months",
-    "required_years_experience": 0,
+    "program_name": "Advanced Certification in Product Management",
+    "start_date": "27 Sep 2025",
+    "required_years_experience": null,
     "tools": [
       {
         "title": "jira",
@@ -1035,76 +817,26 @@
     }
   },
   {
-    "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Executive Program in Product Management and Project Management",
-    "id": "executive-program-in-pmpmt",
-    "start_date": "27 Sep 2025",
-    "duration": "11 Months",
-    "required_years_experience": 0,
-    "tools": [
-      {
-        "title": "jira",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/jira.webp"
-      },
-      {
-        "title": "Aha!",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/cpm/t1.webp"
-      },
-      {
-        "title": "figma",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/figma.webp"
-      },
-      {
-        "title": "confluence",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/confluence.png"
-      },
-      {
-        "title": "mural",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/mural.webp"
-      },
-      {
-        "title": "trello",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/trello.webp"
-      },
-      {
-        "title": "Microsoft Project",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/microsoft-project.webp"
-      },
-
-      {
-        "title": "toggle",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/togll.svg"
-      }
-    ],
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 16717
-      },
-      {
-        "months": 18,
-        "emi": 11591
-      },
-      {
-        "months": 24,
-        "emi": 9007
-      }
-    ],
-    "total": 220000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IITG-Executive-Program-PMPMT.pdf",
-      "source": "IITG Product Management and Project Management Brochure",
-      "campaign_name": "PMPMT-IITG-11 Months"
-    }
-  },
-  {
-    "university_name": "IIM Visakhapatnam",
-    "program_name": "Senior Management Program",
     "id": "senior-management-program",
+    "university_name": "IIM Visakhapatnam",
+    "duration": "12 months",
+    "program_name": "Senior Management Program",
     "start_date": "28 Sep 2025",
     "required_years_experience": 10,
-    "duration": "12 months",
-    "tools": [],
+    "tools": [
+      {
+        "title": "power BI",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Power-BI.webp"
+      },
+      {
+        "title": "excel",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/microsoft-excel.svg"
+      },
+      {
+        "title": "R",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/R-language-v1.webp"
+      }
+    ],
     "monthly_emi": [
       {
         "months": 12,
@@ -1124,150 +856,6 @@
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMV-Senior-Management-Program.pdf",
       "source": "IIMV Senior Management Brochure",
       "campaign_name": "SMP-IIMV-12 Months"
-    }
-  },
-  {
-    "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Professional Certificate Program in Digital Transformation",
-    "id": "professional-certificate-program-in-digital-transformation",
-    "start_date": "23 Aug 2025",
-    "duration": "6 Months",
-    "required_years_experience": 0,
-    "tools": [
-      {
-        "title": "Aha!",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/cpm/t1.webp"
-      },
-      {
-        "title": "jira",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/jira.webp"
-      },
-      {
-        "title": "solidity",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/solidity.svg"
-      },
-      {
-        "title": "excel",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/microsoft-excel.svg"
-      },
-      {
-        "title": "trello",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/trello.webp"
-      },
-      {
-        "title": "slack",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/slack.webp"
-      },
-      {
-        "title": "hotjar",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/hotjar.webp"
-      },
-      {
-        "title": "confluence",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/confluence.png"
-      }
-    ],
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 10817
-      },
-      {
-        "months": 18,
-        "emi": 7500
-      },
-      {
-        "months": 24,
-        "emi": 5828
-      }
-    ],
-    "total": 140000,
-
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IITG-Professional-Certification-Program-in-DT.pdf",
-      "source": "IITG PCP Digital Transformation Brochure",
-      "campaign_name": "PCDT-IITG-6 Month"
-    }
-  },
-  {
-    "university_name": "E&ICT Academy IIT Guwahati",
-    "program_name": "Executive Program in Digital Transformation & AI for Leaders",
-    "id": "executive-program-in-digital-transformation-ai-for-leaders",
-    "start_date": "23 Aug 2025",
-    "duration": "11 Months",
-    "required_years_experience": 0,
-    "tools": [
-      {
-        "title": "Aha!",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/cpm/t1.webp"
-      },
-      {
-        "title": "tensorflow",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/tensorflow.svg"
-      },
-
-      {
-        "title": "ChatGPT",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/open-ai.webp"
-      },
-
-      {
-        "title": "python",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Python.webp"
-      },
-
-      {
-        "title": "colab",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/google-colab.svg"
-      },
-      {
-        "title": "jira",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/jira.webp"
-      },
-      {
-        "title": "solidity",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/solidity.svg"
-      },
-      {
-        "title": "excel",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/microsoft-excel.svg"
-      },
-      {
-        "title": "trello",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/trello.webp"
-      },
-      {
-        "title": "slack",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/slack.webp"
-      },
-      {
-        "title": "hotjar",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/hotjar.webp"
-      },
-      {
-        "title": "confluence",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/confluence.png"
-      }
-    ],
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 16717
-      },
-      {
-        "months": 18,
-        "emi": 11591
-      },
-      {
-        "months": 24,
-        "emi": 9007
-      }
-    ],
-    "total": 220000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IITG-Executive-Program-in-Digital-Transformation-and-AI-for-Leaders.pdf",
-      "source": "IITG Digital Transformation & AI for Leaders Brochure",
-      "campaign_name": "DTAI-IITG-11 Month"
     }
   }
 ]
