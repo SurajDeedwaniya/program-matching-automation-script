@@ -1,5 +1,34 @@
 [
   {
+    "id": "executive-development-program-strategic-hr-leadership",
+    "university_name": "XLRI",
+    "duration": "10 months",
+    "program_name": "Executive Development Program in Strategic HR Leadership",
+    "start_date": "26 Oct 2025",
+    "required_years_experience": 8,
+    "tools": [],
+    "monthly_emi": [
+      {
+        "months": 12,
+        "emi": 21683
+      },
+      {
+        "months": 18,
+        "emi": 14980
+      },
+      {
+        "months": 24,
+        "emi": 11604
+      }
+    ],
+    "total": 240000,
+    "brochure": {
+      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/XLRI-Executive-Development-Program-in-Strategic-HR-Leadership.pdf",
+      "source": "XLRI Executive Development Program in Strategic HR Leadership Brochure",
+      "campaign_name": "EDPSHR-XLRI-10 Months"
+    }
+  },
+  {
     "id": "iimv-executive-program-in-leadership-with-ai",
     "university_name": "IIM Visakhapatnam",
     "duration": "10 months",
