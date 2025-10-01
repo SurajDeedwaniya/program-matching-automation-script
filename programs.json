@@ -778,20 +778,6 @@
     "program_name": "Senior Management Program",
     "start_date": "28 Sep 2025",
     "required_years_experience": 10,
-    "tools": [
-      {
-        "title": "power BI",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Power-BI.webp"
-      },
-      {
-        "title": "excel",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/microsoft-excel.svg"
-      },
-      {
-        "title": "R",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/R-language-v1.webp"
-      }
-    ],
     "monthly_emi": [
       {
         "months": 12,
