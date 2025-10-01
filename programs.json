@@ -1,5 +1,43 @@
 [
   {
+    "id": "executive-program-in-strategy-leadership-and-innovation-in-ai-era",
+    "university_name": "IIM Visakhapatnam",
+    "duration": "11 months",
+    "program_name": "Executive Program in Strategy, Leadership and Innovation in AI Era",
+    "start_date": "4 Jan 2026",
+    "required_years_experience": 5,
+    "tools": [
+      {
+        "title": "excel",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/microsoft-excel.svg"
+      },
+      {
+        "title": "power BI",
+        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/Power-BI.webp"
+      }
+    ],
+    "monthly_emi": [
+      {
+        "months": 12,
+        "emi": 24584
+      },
+      {
+        "months": 18,
+        "emi": 17045
+      },
+      {
+        "months": 24,
+        "emi": 13245
+      }
+    ],
+    "total": 300000,
+    "brochure": {
+      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMV-executive-program-in-strategy-leadership-and-innovation-in-ai-era.pdf",
+      "source": "IIMV Executive Program in Strategy, Leadership and Innovation in AI Era Brochure",
+      "campaign_name": "EPSLAI-IIMV-11 Months"
+    }
+  },
+  {
     "id": "executive-development-program-strategic-hr-leadership",
     "university_name": "XLRI",
     "duration": "10 months",
@@ -58,6 +96,10 @@
       }
     ],
     "monthly_emi": [
+      {
+        "months": 9,
+        "emi": 25468
+      },
       {
         "months": 12,
         "emi": 19667
@@ -212,7 +254,7 @@
     "university_name": "E&ICT Academy IIT Kanpur",
     "duration": "5 Months",
     "program_name": "Advanced Certificate Program in AI for Leaders",
-    "start_date": "21 Sep 2025",
+    "start_date": "23 Nov 2025",
     "required_years_experience": null,
     "tools": [
       {
@@ -270,7 +312,7 @@
     "university_name": "E&ICT Academy IIT Kanpur",
     "duration": "8 Months",
     "program_name": "Professional Certificate Program in Leadership with AI",
-    "start_date": "21 Sep 2025",
+    "start_date": "23 Nov 2025",
     "required_years_experience": null,
     "tools": [
       {
@@ -328,7 +370,7 @@
     "university_name": "IIM Visakhapatnam",
     "duration": "11 Months",
     "program_name": "PG Certificate Program in Chief Digital & AI Officer (The CDAIO Program)",
-    "start_date": "14 Sep 2025",
+    "start_date": "28 Sep 2025",
     "required_years_experience": 10,
     "tools": [
       {
@@ -375,122 +417,6 @@
       "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMV-PG-Certificate-Program-in-Chief-Digital-and-AI-Officer-Program.pdf",
       "source": "IIMV PG Certificate Program in Chief Digital & AI Officer (The CDAIO Program) Brochure",
       "campaign_name": "IIMV-CDAIO-11-Months"
-    }
-  },
-  {
-    "id": "professional-certificate-program-in-product-management",
-    "university_name": "E&ICT Academy IIT Kanpur",
-    "duration": "6 Months",
-    "program_name": "Professional Certificate Program in Product Management",
-    "start_date": "7 Sep 2025",
-    "required_years_experience": 1,
-    "tools": [
-      {
-        "title": "confluence",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/confluence.png"
-      },
-      {
-        "title": "survey monkey",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/survey-monkey.webp"
-      },
-      {
-        "title": "Aha!",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/tools-images/cpm/t1.webp"
-      },
-      {
-        "title": "trello",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/trello.webp"
-      },
-      {
-        "title": "miro",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/miro.webp"
-      },
-      {
-        "title": "figma",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/figma.webp"
-      },
-      {
-        "title": "jira",
-        "icon": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/tools/jira.webp"
-      }
-    ],
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 11926
-      },
-      {
-        "months": 18,
-        "emi": 8239
-      },
-      {
-        "months": 24,
-        "emi": 6382
-      }
-    ],
-    "total": 150000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IITK-Professional-Certificate-Program-in-Product-Management.pdf",
-      "source": "IITK Professional Certificate Program in Product Management Brochure",
-      "campaign_name": "PCPM-IITK-6 Months"
-    }
-  },
-  {
-    "id": "chief-technology-officer-programme",
-    "university_name": "IIM Visakhapatnam",
-    "duration": "11 months",
-    "program_name": "Chief Technology Officer Programme (The CTO Program)",
-    "start_date": "21 Sep 2025",
-    "required_years_experience": 10,
-    "tools": [],
-    "monthly_emi": [
-      {
-        "months": 11,
-        "emi": 28025
-      },
-      {
-        "months": 18,
-        "emi": 19431
-      },
-      {
-        "months": 24,
-        "emi": 15099
-      }
-    ],
-    "total": 340000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/IIMV-Chief-Technology-Officer-Programme.pdf",
-      "source": "IIMV Chief Technology Officer Programme Brochure",
-      "campaign_name": "IIMV-CTOP-11 Months"
-    }
-  },
-  {
-    "id": "executive-development-program-in-digital-hr-leadership-&-people-analytics",
-    "university_name": "XLRI",
-    "duration": "10 months",
-    "program_name": "Executive Development Programme in Digital HR Leadership and People Analytics",
-    "start_date": "6 Sep 2025",
-    "required_years_experience": 3,
-    "tools": [],
-    "monthly_emi": [
-      {
-        "months": 12,
-        "emi": 21683
-      },
-      {
-        "months": 18,
-        "emi": 14980
-      },
-      {
-        "months": 24,
-        "emi": 11604
-      }
-    ],
-    "total": 240000,
-    "brochure": {
-      "pdf": "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Program-Brochures/Executive-Development-Programme-in-Digital-HR-Leadership-and-People-Analytics.pdf",
-      "source": "XLRI Executive Development Programme in Digital HR Leadership and People Analytics Brochure",
-      "campaign_name": "EDPSHR-XLRI-10 Months"
     }
   },
   {
